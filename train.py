@@ -41,6 +41,10 @@ def fit_on_batch(batch):
     if opts.gradient_accumulation_steps > 1:
         loss = loss / opts.gradient_accumulation_steps
     loss.backward()
+#    if loss > 0:
+#        print("Loss>0")
+#        print("xx    = ", tokenizer.decode(xx[0]))
+#        print("yy    = ", tokenizer.decode(yy[0]))
     return loss
 
 def pretrain(data, stats=None): 
@@ -68,7 +72,7 @@ def pretrain(data, stats=None):
         global_step = max(stats.keys())
         epochs_trained = global_step // (len(dataloader) // opts.gradient_accumulation_steps)
         steps_trained_in_current_epoch = global_step % (len(dataloader) // opts.gradient_accumulation_steps)
-        print("Resuming Training ... ")
+        print("Resuming Pretraining ... ")
     else:
         stats = {}
         global_step, epochs_trained, steps_trained_in_current_epoch = 0,0,0

@@ -80,7 +80,7 @@ def load_from_pretrained():
     try: 
         print("*"*50)
         print("Load from checkpoint")
-        tokenizer = GPT2Tokenizer.from_pretrained(opts.model_name_or_path, 
+        tokenizer = GPT2Tokenizer.from_pretrained("saved/checkpoint/tokenizer/", 
                                                 pad_token='<|endoftext|>', cls_token='<|cls|>',
                                                 sep_token='<|sep|>')
         model = GPT2LMHeadModel.from_pretrained(opts.model_name_or_path)
